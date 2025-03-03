@@ -1,5 +1,5 @@
 ---
-title: 'The FP Epiphany - Applicatives'
+title: 'The FP Epiphany (Part 2) - Applicatives'
 description: 'A serie about learning functional programming. This post is about applicative functors.'
 pubDate: 'Oct 31 2024'
 ---

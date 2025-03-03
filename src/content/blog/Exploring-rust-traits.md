@@ -1,5 +1,5 @@
 ---
-title: 'Exploring Rust - Traits'
+title: 'Exploring Rust - Traits (Part 1)'
 description: 'A serie about the rust programming language.'
 pubDate: 'Feb 28 2025'
 ---

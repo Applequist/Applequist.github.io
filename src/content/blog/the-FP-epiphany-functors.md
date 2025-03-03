@@ -1,5 +1,5 @@
 ---
-title: 'The FP Epiphany - Functors'
+title: 'The FP Epiphany (Part 1) - Functors'
 description: 'A serie about learning functional programming. This post is about functors.'
 pubDate: 'Sep 27 2024'
 updatedDate: 'Sep 29 2024'
