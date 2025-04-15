@@ -41,13 +41,14 @@ In this first part we look at the code structured using **plain JARs** (as oppos
 
 The code is available [here] and is made of 3 artifacts:
 - `example.api` has 1 package `org.example.api` with a public interface:
-```GreetService.java
+```java
 public interface GreetService {
     void greet();
 }
 ```
+
 - `example.impl` **depends on** `example.api` and has 1 package `org.example.impl` with a public implementation of `GreetService`:
-```RudeGreeter.java
+```java
 public class RudeGreeter implements GreetService {
     @Overrides
     public void greet() {
@@ -55,8 +56,9 @@ public class RudeGreeter implements GreetService {
     }
 }
 ```
+
 - finalyy `example.app` **depends on** both `example.api` and `example.impl` and has 1 package `org.example.app` with a `Main` class:
-```Main.java
+```java
 public class Main {
     public static void main(String[] args) {
         GreetService greeter = new RudeGreeter();
@@ -77,7 +79,7 @@ Now the thing is although the api, the impl and the app are in separate JARs, JA
 private and public API is only enforce at compile time. 
 
 To demonstrate this, lets add a private implemantation `PrivateGreeter` of `GreetService` in `example.impl`:
-```PrivateGreeter.java
+```java
 package org.example.impl;
 
 import org.example.api.GreetService;
@@ -91,7 +93,7 @@ class PrivateGreeter implements GreetService {
 ```
 
 And let's use that in `org.example.app.Main#main()` using reflection:
-```Main.java
+```java
 package org.example.app;
 
 public class Main {
