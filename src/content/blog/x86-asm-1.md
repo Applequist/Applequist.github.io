@@ -9,6 +9,7 @@ So learning a bit of assembly is one thing I decided to do to get a better idea 
 
 So this is the first part of my notes on following the book [Learn to program with assembly](https://www.amazon.com/Learn-Program-Assembly-Foundational-Programmers/dp/1484274369) by Jonathan Bartlett.
 
+# x86 Assembly basics
 
 ## Registers
 
@@ -246,3 +247,81 @@ The way to use it to execute N loops is as follow:
   if `%rcx` is not 0 (-neq conditional code)
 
 
+## Program layout
+
+An assembly program can be divided into multiple sections.
+
+### data sections
+
+Assembly programs need to store data: constants, global varialbes... 
+
+These data are stored in data sections. There are multiple type of data sections:
+- `.data` for initialized data and constants
+- `.rodata` for readonly data
+- `.bss` for unitialized data. The size of the data is specified but not the values. 
+
+The following assembly sample defines a data section and 2 constants:
+```asm
+.section .data
+foo:
+  .quad 42
+bar:
+  .quad 24
+```
+
+We use `.quad` to initialize quads (64bit) values in memory. We could initialize more than 1 value:
+```asm
+numbers:
+  .quad 1, 2, 3, 4, 5, 6, 7
+```
+
+But that is just lays numbers in memory one after the other starting at address labelled `numbers`. 
+If we want to sum these numbers we can start at `numbers`, load the value at that address into a register, 
+move to the next one, load it and add it to the first one and so on... But wait! Where/when do we stop? 
+
+To know when to stop we can either add a *sentinel* value like a `\0` in C-strings or simply declare the number of
+value: 
+```asm
+number_count: 
+  .quad 7
+numbers:
+  .quad 1, 2, 3, 4, 5, 6, 7
+```
+
+### Text section
+
+The text section contains the actual code of the program.
+
+The following assembly sample defines a text section (in addition to the data section above),
+add the 2 contants and return the result as the exit code:
+```asm
+.global _start
+
+.section .data
+foo:
+  .quad 42
+bar:
+  .quad 24
+
+.section .text
+_start:
+  # load values in registers using direct addressing mode
+  movq foo, %rbx
+  movq bar, %rcx
+
+  # Add the values and store the result in %rcx
+  addq %rbx, %rcx 
+
+  # Return the sum
+  movq $60, %rax  # exit system call
+  movq %rcx, %rdi # exit code
+  syscall
+```
+
+To compile and run:
+```sh
+$ as sum.s -o sum.o && ld sum.o -o sum
+$ ./sum
+$ echo $?
+$ 66
+```o
