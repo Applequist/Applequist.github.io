@@ -288,6 +288,16 @@ numbers:
   .quad 1, 2, 3, 4, 5, 6, 7
 ```
 
+There are other types of data section:
+- **.rodata*** sections contain **read-only** data. Attempt to modify `.rodata` memory will abort the program.
+- **.bss** sections contain uninitialized data (initialized to all zeroes by the OS). Instead of values you specify
+  size. This allows to keep executable size low as the memory is not reserved until runtime by the OS.
+
+You can also reserve data in the `.bss` section using 2 directives:
+- `.lcomm sym, 8` reserves `8` bytes in the `.bss` section and defines a **local** symbol `sym` for the address,
+  unless `sym` is also marked as `.global`.
+- `.comm sym, 8` is similar to `.lcomm` except that the linker will merge all declarations for similarly named symbols.
+
 ### Text section
 
 The text section contains the actual code of the program.
@@ -325,3 +335,34 @@ $ ./sum
 $ echo $?
 $ 66
 ```o
+
+### Alignment 
+
+Alignment is quite important, not only for data but also for code: some instructions cannot be executed if not 
+properly aligned in memory.
+
+Alignment can be adjusted (in `.data` or `.text` section) using the following directives:
+- `.balign 8` aligns the next address to the given multiple. Padding is filled with 0s in `.data` sections,
+- `.p2align 3` specifies the number of bits used for alignments. Here the last 3 bits must be 0, so this is equivalent
+  to `.balign 8` (2^3 = 8).
+- `.align` NOT RECOMMENDED as it behaves either as `.balign` or as `.p2align` depending on the context.
+  or `nop` instructions in `.text` sections.
+
+Note that the stack must be 16-byte aligned.
+
+### Including other code
+
+You can `.include "a_file.s"` a file in your program. Usually included files do not contain any `.data` or `.text` section at all
+only `.equ` constants.
+
+You can `.incbin "my_img.png"` a binary file verbatim into your object file. 
+
+### Annotating code
+
+You can annotate `.global` symbols with `.type` annotations, eg: 
+```asm
+.global my_var, my_func
+.type my_var, @object
+.type my_func, @function
+```
+
