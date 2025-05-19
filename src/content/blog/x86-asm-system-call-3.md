@@ -1,5 +1,5 @@
 ---
-title: 'x86 ASM - Part 3'
+title: 'x86 ASM - System call (Part 3)'
 description: 'Low level programming in assembly'
 pubDate: 'May 11 2025'
 ---

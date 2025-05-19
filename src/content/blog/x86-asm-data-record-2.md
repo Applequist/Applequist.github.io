@@ -1,5 +1,5 @@
 ---
-title: 'x86 ASM - Part 2'
+title: 'x86 ASM - Data Records (Part 2)'
 description: 'Low level programming in assembly'
 pubDate: 'May 09 2025'
 ---

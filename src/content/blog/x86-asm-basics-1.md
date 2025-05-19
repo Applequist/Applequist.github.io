@@ -1,5 +1,5 @@
 ---
-title: 'x86 ASM - Part 1'
+title: 'x86 ASM - Basics (Part 1)'
 description: 'Low level programming in assembly'
 pubDate: 'May 08 2025'
 ---
