@@ -228,7 +228,7 @@ html {
 .home-infos {
   flex: 0 11rem;
   margin-top: 1rem;
-  align-items: left;
+  align-items: start;
 }
 
 .home-infos figure {
