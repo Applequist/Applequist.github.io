@@ -2,6 +2,7 @@
 title: 'x86 ASM - System call (Part 3)'
 description: 'Low level programming in assembly'
 pubDate: 'May 11 2025'
+tags: ['asm']
 ---
 
 ## System call 

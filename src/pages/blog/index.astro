@@ -5,15 +5,55 @@ import { getCollection } from 'astro:content';
 const posts = (await getCollection('blog', ({data}) => !data.hidden)).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
+
+const allTags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
 ---
 <Page>
 	<p><a href="/">../</a></p>
 
-	<h1>All Blog posts</h1>
-	{
-		posts.map((post) => (
-			<h2><a href={`/blog/${post.slug}/`}>{post.data.title}</a></h2>
-			<p>{post.data.description}</p>
-		))
-	}
+	{allTags.length > 0 && (
+		<nav class="tag-filter" aria-label="Filter by tag">
+			<button class="tag-btn active" data-tag="">all</button>
+			{allTags.map((tag) => (
+				<button class="tag-btn" data-tag={tag}>{tag}</button>
+			))}
+		</nav>
+	)}
+
+	<ul class="post-list">
+		{posts.map((post) => (
+			<li class="post-item" data-tags={post.data.tags.join(' ')}>
+				<h2><a href={`/blog/${post.slug}/`}>{post.data.title}</a></h2>
+				<p>{post.data.description}</p>
+				{post.data.tags.length > 0 && (
+					<p class="post-tags">
+						{post.data.tags.map((tag) => (
+							<span class="tag">{tag}</span>
+						))}
+					</p>
+				)}
+			</li>
+		))}
+	</ul>
 </Page>
+
+<script>
+	const buttons = document.querySelectorAll<HTMLButtonElement>('.tag-btn');
+	const items = document.querySelectorAll<HTMLLIElement>('.post-item');
+
+	function applyFilter(tag: string) {
+		buttons.forEach((b) => b.classList.toggle('active', b.dataset.tag === tag));
+		items.forEach((item) => {
+			const tags = item.dataset.tags ?? '';
+			item.hidden = tag !== '' && !tags.split(' ').includes(tag);
+		});
+	}
+
+	// activate filter from ?tag= query param on page load
+	const initial = new URLSearchParams(location.search).get('tag') ?? '';
+	if (initial) applyFilter(initial);
+
+	buttons.forEach((btn) => {
+		btn.addEventListener('click', () => applyFilter(btn.dataset.tag ?? ''));
+	});
+</script>

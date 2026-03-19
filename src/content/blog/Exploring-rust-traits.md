@@ -2,6 +2,7 @@
 title: 'Exploring Rust - Traits (Part 1)'
 description: 'A serie about the rust programming language.'
 pubDate: 'Feb 28 2025'
+tags: ['rust']
 ---
 
 What are Rust traits and what are they used for ?

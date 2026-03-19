@@ -2,6 +2,7 @@
 title: 'x86 ASM - Using static libs (Part 5)'
 description: 'Low level programming in assembly'
 pubDate: 'May 19 2025'
+tags: ['asm']
 ---
 
 Note: These are notes from reading the book [Learn to program with assembly]() by Jonathan Bartlett.

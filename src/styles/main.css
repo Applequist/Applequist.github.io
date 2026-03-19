@@ -255,6 +255,59 @@ footer {
 	justify-content: center;
 }
 
+/* tag pills */
+.tag {
+	display: inline-block;
+	font-size: 0.75rem;
+	color: var(--comment);
+	border: 1px dashed var(--comment);
+	border-radius: 0.2em;
+	padding: 0 0.4em;
+	margin-right: 0.3rem;
+	text-decoration: none;
+}
+
+.tag:hover {
+	color: var(--fg);
+	border-color: var(--fg);
+}
+
+.post-tags {
+	margin-top: 0.25rem;
+}
+
+/* tag filter bar on blog index */
+.tag-filter {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.4rem;
+  margin-top: 1rem;
+	margin-bottom: 0.75rem;
+}
+
+.tag-btn {
+	font-family: var(--font-stack);
+	font-size: 0.75rem;
+	color: var(--comment);
+	background: none;
+	border: 1px dashed var(--comment);
+	border-radius: 0.2em;
+	padding: 0.15em 0.5em;
+	cursor: pointer;
+}
+
+.tag-btn:hover,
+.tag-btn.active {
+	color: var(--fg);
+	border-color: var(--fg);
+	border-style: solid;
+}
+
+.post-list {
+	list-style: none;
+	padding: 0;
+}
+
 /* mobile */
 @media (max-width: 480px) {
 	.banner {

@@ -5,7 +5,7 @@ import FormattedDate from '../components/FormattedDate.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, pubDate, updatedDate } = Astro.props;
+const { title, pubDate, updatedDate, tags = [] } = Astro.props;
 ---
 
 <Page>
@@ -13,6 +13,13 @@ const { title, pubDate, updatedDate } = Astro.props;
 	<article>
 		<h1>{title}</h1>
 		<p>Last update <FormattedDate date={updatedDate || pubDate}/></p>
+		{tags.length > 0 && (
+			<p class="post-tags">
+				{tags.map((tag: string) => (
+					<a class="tag" href={`/blog/?tag=${tag}`}>{tag}</a>
+				))}
+			</p>
+		)}
 		<slot />
 	</article>
 </Page>

@@ -2,6 +2,7 @@
 title: 'x86 ASM - Basics (Part 1)'
 description: 'Low level programming in assembly'
 pubDate: 'May 08 2025'
+tags: ['asm']
 ---
 
 Lately I felt the need to go back to the basics to strengthen my understanding of computing and programming languages.

@@ -2,6 +2,7 @@
 title: 'x86 ASM - Calling functions (Part 4)'
 description: 'Low level programming in assembly'
 pubDate: 'May 17 2025'
+tags: ['asm']
 ---
 
 ## Functions and calling conventions

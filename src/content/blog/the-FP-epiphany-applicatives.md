@@ -2,6 +2,7 @@
 title: 'The FP Epiphany (Part 2) - Applicatives'
 description: 'A serie about learning functional programming. This post is about applicative functors.'
 pubDate: 'Oct 31 2024'
+tags: ['functional-programming']
 ---
 
 In a [previous post](/blog/the-fp-epiphany-functors/), we learned about functors and how they allow us to apply/map

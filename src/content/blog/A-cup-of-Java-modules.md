@@ -2,6 +2,7 @@
 title: 'A cup of Java: Modules'
 description: 'A quick exploration of Java modules'
 pubDate: 'Apr 15 2025'
+tags: ['java']
 ---
 
 In this post, I do a quick exploration of Java modules.

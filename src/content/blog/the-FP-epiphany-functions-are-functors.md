@@ -2,6 +2,7 @@
 title: "The FP Epiphany - Functions are Functors"
 description: "Mapping over function is really function composition."
 pubDate: "Nov 7 2024"
+tags: ['functional-programming']
 ---
 
 While continuing reading Haskell Programming from 1st principle, I stumble upon
