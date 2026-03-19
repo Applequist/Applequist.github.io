@@ -4,6 +4,13 @@ import Banner from "../components/Banner.astro";
 import Footer from "../components/Footer.astro";
 
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
 ---
 <!doctype html>
 <html lang="en">
@@ -19,7 +26,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		gtag('config', 'G-E05V0M6FVY');
 		</script>
 
-		<Head title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<Head title={title} description={description} />
 	</head>
 	
 	<body class="basic">

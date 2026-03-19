@@ -5,10 +5,10 @@ import FormattedDate from '../components/FormattedDate.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, pubDate, updatedDate, tags = [] } = Astro.props;
+const { title, description, pubDate, updatedDate, tags = [] } = Astro.props;
 ---
 
-<Page>
+<Page title={title} description={description}>
 	<p><a href="/blog/">../</a></p>
 	<article>
 		<h1>{title}</h1>
