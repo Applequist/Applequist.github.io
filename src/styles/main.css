@@ -212,7 +212,7 @@ html {
 .banner nav a {
 	margin-left: 1rem;
 	color: var(--comment);
-	padding: 0.5rem 0.25rem;
+	/*padding: 0.5rem 0.25rem;*/
 	display: inline-block;
 }
 
@@ -253,18 +253,6 @@ html {
 footer {
 	display: flex;
 	justify-content: center;
-}
-
-/* blinking block cursor after site title */
-.banner .prompt::after {
-	content: '█';
-	animation: blink 1s step-end infinite;
-	color: var(--blue);
-	margin-left: 2px;
-}
-
-@keyframes blink {
-	50% { opacity: 0; }
 }
 
 /* mobile */
