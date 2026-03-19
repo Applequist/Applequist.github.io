@@ -125,6 +125,9 @@ html {
 	padding: 2px;
 	border: 1px dashed var(--comment);
 	border-radius: 0.3em;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+	font-size: 0.85rem;
 }
 
 .basic code {
@@ -150,6 +153,10 @@ html {
 	width: 80%;
 	margin: 0 auto;
 	margin-bottom: 0.5rem;
+	display: block;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+	max-width: 100%;
 }
 
 .basic table + p {
@@ -205,6 +212,8 @@ html {
 .banner nav a {
 	margin-left: 1rem;
 	color: var(--comment);
+	padding: 0.5rem 0.25rem;
+	display: inline-block;
 }
 
 .banner nav a.active {
@@ -244,5 +253,42 @@ html {
 footer {
 	display: flex;
 	justify-content: center;
+}
+
+/* blinking block cursor after site title */
+.banner .prompt::after {
+	content: '█';
+	animation: blink 1s step-end infinite;
+	color: var(--blue);
+	margin-left: 2px;
+}
+
+@keyframes blink {
+	50% { opacity: 0; }
+}
+
+/* mobile */
+@media (max-width: 480px) {
+	.banner {
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.banner nav ul {
+		justify-content: flex-start;
+	}
+
+	.banner nav a {
+		margin-left: 0;
+		margin-right: 1rem;
+	}
+
+	body {
+		margin: 0 1rem;
+	}
+
+	.home-main {
+		margin-left: 0;
+	}
 }
 
